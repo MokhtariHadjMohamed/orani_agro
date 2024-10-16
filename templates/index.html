@@ -1,0 +1,335 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+<!-- ============================================================== -->
+<!-- Preloader - style you can find in spinners.css -->
+<!-- ============================================================== -->
+<div class="preloader">
+    <div class="lds-ripple">
+        <div class="lds-pos"></div>
+        <div class="lds-pos"></div>
+    </div>
+</div>
+<!-- ============================================================== -->
+<!-- Main wrapper - style you can find in pages.scss -->
+<!-- ============================================================== -->
+<div id="main-wrapper" data-layout="vertical" data-navbarbg="skin5" data-sidebartype="full"
+    data-sidebar-position="absolute" data-header-position="absolute" data-boxed-layout="full">
+    <!-- ============================================================== -->
+    <!-- Topbar header - style you can find in pages.scss -->
+    <!-- ============================================================== -->
+    <header class="topbar" data-navbarbg="skin5">
+        <nav class="navbar top-navbar navbar-expand-md navbar-dark">
+            <div class="navbar-header" data-logobg="skin5">
+                <!-- ============================================================== -->
+                <!-- Logo -->
+                <!-- ============================================================== -->
+                <a class="navbar-brand" href="/">
+                    <!-- Logo text -->
+                    <span class="logo-text">
+                        <!-- dark Logo text -->
+                        <img src="../static/images/logo-text.png" alt="homepage" class="dark-logo imgText" />
+                        <!-- Light Logo text -->
+                        <img src="../static/images/logo-light-text.png" class="light-logo imgText" alt="homepage" />
+                    </span>
+                </a>
+                <!-- ============================================================== -->
+                <!-- End Logo -->
+                <!-- ============================================================== -->
+                <!-- This is for the sidebar toggle which is visible on mobile only -->
+                <a class="nav-toggler waves-effect waves-light d-block d-md-none" href="javascript:void(0)"><i
+                        class="ti-menu ti-close"></i></a>
+            </div>
+            <!-- ============================================================== -->
+            <!-- End Logo -->
+            <!-- ============================================================== -->
+            <div class="navbar-collapse collapse" id="navbarSupportedContent" data-navbarbg="skin5">
+                <!-- ============================================================== -->
+                <!-- toggle and nav items -->
+                <!-- ============================================================== -->
+                <ul class="navbar-nav float-start me-auto">
+                    <!-- ============================================================== -->
+                    <!-- Search -->
+                    <!-- ============================================================== -->
+                    <li class="nav-item search-box"> <a class="nav-link waves-effect waves-dark"
+                            href="javascript:void(0)"><i class="ti-search"></i></a>
+                        <form class="app-search position-absolute" action="/searchOrder" method="post">
+                            <input type="text" class="form-control" placeholder="Search &amp; enter" name="search">
+                            <a class="srh-btn"><i class="ti-close"></i></a>
+                        </form>
+                    </li>
+                </ul>
+                <!-- ============================================================== -->
+                <!-- Right side toggle and nav items -->
+                <!-- ============================================================== -->
+            </div>
+        </nav>
+    </header>
+    <!-- ============================================================== -->
+    <!-- End Topbar header -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- Left Sidebar - style you can find in sidebar.scss  -->
+    <!-- ============================================================== -->
+    <aside class="left-sidebar" data-sidebarbg="skin6">
+        <!-- Sidebar scroll-->
+        <div class="scroll-sidebar">
+            <!-- Sidebar navigation-->
+            <nav class="sidebar-nav">
+                <ul id="sidebarnav">
+                    <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/"
+                            aria-expanded="false"><i class="mdi mdi-view-dashboard"></i><span
+                                class="hide-menu">Dashboard</span></a></li>
+                    <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
+                            href="/users.html" aria-expanded="false"><i class="mdi mdi-account-multiple"></i><span
+                                class="hide-menu">Users</span></a></li>
+                    <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
+                            href="/products.html" aria-expanded="false"><i class="mdi mdi-barcode-scan"></i><span
+                                class="hide-menu">Products</span></a></li>
+                    <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
+                            href="/orders.html" aria-expanded="false"><i class="mdi mdi-truck-trailer"></i><span
+                                class="hide-menu">Orders</span></a></li>
+                    <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
+                            href="/category.html" aria-expanded="false"><i class="mdi mdi-hexagon-multiple"></i><span
+                                class="hide-menu">Category</span></a></li>
+                </ul>
+
+            </nav>
+            <!-- End Sidebar navigation -->
+        </div>
+        <!-- End Sidebar scroll-->
+    </aside>
+    <!-- ============================================================== -->
+    <!-- End Left Sidebar - style you can find in sidebar.scss  -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- Page wrapper  -->
+    <!-- ============================================================== -->
+    <div class="page-wrapper">  
+        <!-- ============================================================== -->
+        <!-- Bread crumb and right sidebar toggle -->
+        <!-- ============================================================== -->
+        <div class="page-breadcrumb">
+            <div class="row align-items-center">
+                <div class="col-5">
+                    <h4 class="page-title">Dashboard</h4>
+                    <div class="d-flex align-items-center">
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">Library</li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- ============================================================== -->
+        <!-- End Bread crumb and right sidebar toggle -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- Container fluid  -->
+        <!-- ============================================================== -->
+        <div class="container-fluid">
+            <!-- ============================================================== -->
+            <!-- Sales chart -->
+            <!-- ============================================================== -->
+            <div class="row">
+                <div class="col-md-8 tableScroll">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">#</th>
+                                                <th scope="col">NameProduct</th>
+                                                <th scope="col">idOrder</th>
+                                                <th scope="col">Quantite</th>
+                                                <th scope="col">Edit</th>
+                                                <th scope="col">Delete</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for o, u in zip(orders, users)%}
+                                            <tr>
+                                                <th scope="row">{{loop.index}}</th>
+                                                <td>{{u.name}}</td>
+                                                <td>{{o.idOrder}}</td>
+                                                <td>{%if o.orderSituation == "تم توصيل"%}
+                                                    <label class="label label-success">{{o.orderSituation}}</label>
+                                                    {%elif o.orderSituation == "تم الشحن"%}
+                                                    <label class="label label-info">{{o.orderSituation}}</label>
+                                                    {%elif o.orderSituation == "في انتظار شحن"%}
+                                                    <label class="label label-danger">{{o.orderSituation}}</label>
+                                                    {%endif%}
+                                                </td>
+                                                <td>
+                                                    <a href="ordersInfo.html/{{o.idOrder}}"
+                                                        class="btn btn-success text-white">
+                                                        Edit
+                                                    </a>
+                                                </td>
+                                                <td>
+                                                    <a href="#" class="btn btn-danger text-white">
+                                                        Delete
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                            {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title">Feeds</h4>
+                            <div class="feed-widget">
+                                <ul class="list-style-none feed-body m-0 p-b-20">
+                                    <li class="feed-item">
+                                        <div class="feed-icon bg-success">
+                                            <i class="ti-server"></i>
+                                        </div>
+                                        Product Number <span class="ms-auto font-12 text-muted">{{len(products)}}</span>
+                                    </li>
+                                    <li class="feed-item">
+                                        <div class="feed-icon bg-warning"><i class="ti-shopping-cart"></i></div>
+                                        New order received.<span
+                                            class="ms-auto font-12 text-muted">{{len(orders)}}</span>
+                                    </li>
+                                    <li class="feed-item">
+                                        <div class="feed-icon bg-danger"><i class="ti-user"></i></div>
+                                        Users Number.<span class="ms-auto font-12 text-muted">{{len(users)}}</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- ============================================================== -->
+            <!-- Sales chart -->
+            <!-- ============================================================== -->
+            <!-- ============================================================== -->
+            <!-- Table -->
+            <!-- ============================================================== -->
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title">Worker</h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">#</th>
+                                            <th scope="col">First</th>
+                                            <th scope="col">Last</th>
+                                            <th scope="col">Phone</th>
+                                            <th scope="col">Edit</th>
+                                            <th scope="col">Delete</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for user in users%}
+                                        {%if not user.type == "user"%}
+                                        <tr>
+                                            <th scope="row">{{loop.index}}</th>
+                                            <td>{{user.name}}</td>
+                                            <td>{{user.familyName}}</td>
+                                            <td>{{user.phone}}</td>
+                                            <td>
+                                                <a href="usersInfo.html/{{user.idUser}}"
+                                                    class="btn btn-success text-white">
+                                                    Edit
+                                                </a>
+                                            </td>
+                                            <td>
+                                                <a href="/delete/Users/{{user.idUser}}"
+                                                    class="btn btn-danger text-white">
+                                                    Delete
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        {%endif%}
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- ============================================================== -->
+            <!-- Table -->
+            <!-- ============================================================== -->
+            <!-- ============================================================== -->
+            <!-- Recent comment and chats -->
+            <!-- ============================================================== -->
+            <div class="row">
+                <!-- column -->
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Main Category</h4>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">idCategory</th>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">code</th>
+                                    <th scope="col">Edit</th>
+                                    <th scope="col">Delete</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for c in category%}
+                                <tr>
+                                    <th scope="row">{{category[c]["idCategory"]}}</th>
+                                    <td>{{category[c]['Name']}}</td>
+                                    <td>{{category[c]['code']}}</td>
+                                    <td>
+                                        <a href="categoryInfo.html/{{category[c]['idCategory']}}"
+                                            class="btn btn-success text-white">
+                                            Edit
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <a href="/delete/Category/{{category[c]['idCategory']}}" class="btn btn-danger text-white">
+                                            Delete
+                                        </a>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <!-- ============================================================== -->
+            <!-- Recent comment and chats -->
+            <!-- ============================================================== -->
+        </div>
+        <!-- ============================================================== -->
+        <!-- End Container fluid  -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Page wrapper  -->
+    <!-- ============================================================== -->
+</div>
+<!-- ============================================================== -->
+<!-- End Wrapper -->
+<!-- ============================================================== -->
+<!-- ============================================================== -->
+{% endblock %}

@@ -1,0 +1,8 @@
+.imgText{
+    width: 100%;
+}
+
+.tableScroll{
+    height: 285px;
+    overflow: auto;
+}
